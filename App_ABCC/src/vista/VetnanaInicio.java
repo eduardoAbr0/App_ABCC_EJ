@@ -1,21 +1,17 @@
 package vista;
 
-import controlador.AlumnoDAO;
-import modelo.Alumno;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 
 public class VetnanaInicio extends JFrame {
     BorderLayout bl = new BorderLayout();
     CardLayout cl = new CardLayout();
     JPanel barraArriba, general, opciones;
-    JButton btnInicio, btnClientes, btnAutos, btnEmpleados, btnFacturas, btnVentas;
+    JButton btnClientes, btnAlumnos, btnCursos, btnDocentes;
 
-    public VetnanaInicio{
+    public VetnanaInicio() {
         //CONFIGURACIONES INICIALES DEL JFRAME
         getContentPane().setLayout(bl);
         setTitle("AutosAmistosos");
@@ -29,75 +25,38 @@ public class VetnanaInicio extends JFrame {
         general = new JPanel(cl);
         opciones = new JPanel();
         //CREACION DE SUBPANELES PARA LA PARTE CENTRAL DEL PANEL GENERAL
-        panelAlumnos pnlInicio = new panelAlumnos();
+        //panelAlumnos pnlAlum = new panelAlumnos();
 
-        general.add(pnlInicio, "INICIO");
-        general.add(pnlAuto,"AUTOS");
-        general.add(pnlClientes,"CLIENTES");
-        general.add(pnlEmpleados,"EMPLEADOS");
-        general.add(pnlVentas,"VENTAS");
-        general.add(pnlFacturas,"FACTURAS");
+        //general.add(pnlAlum,"ALUMNOS");
 
         //PERSONALIZACION BASICA DE COLORES PARA IDENTIFICAR
-        barraArriba.setBackground(Color.CYAN);
-        general.setBackground(Color.BLACK);
-        opciones.setBackground(Color.GREEN);
+        barraArriba.setBackground(Color.LIGHT_GRAY);
+        general.setBackground(Color.GRAY);
+        opciones.setBackground(Color.BLACK);
 
         //CONFIGURACION TAMANOS Y ESPECIFICACIONES PARA LAYOUT EN EL PANEL
         barraArriba.setPreferredSize(new Dimension(0, 200));
         opciones.setPreferredSize(new Dimension(200, 0));
-        opciones.setLayout(new GridLayout(6, 0));
+        opciones.setLayout(new GridLayout(4, 0));
 
         //CREACION Y CONFIGURACION DE BOTONES DE LA PARTE IZQUIERDA, QUE SERAN
         //DE USO PARA ACCEDER A LOS DIFERENTES SUBPANELES
-        btnInicio = new JButton("Inicio");
-        btnInicio.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                cl.show(general, "INICIO");
-            }
-        });
-        opciones.add(btnInicio);
-        btnAutos = new JButton("Autos");
-        btnAutos.addActionListener(new ActionListener() {
+        btnAlumnos = new JButton("Alumnos");
+        btnAlumnos.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 cl.show(general, "AUTOS");
             }
         });
-        opciones.add(btnAutos);
-        btnClientes = new JButton("Clientes");
-        btnClientes.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                cl.show(general, "CLIENTES");
-            }
-        });
+        opciones.add(btnAlumnos);
+        btnClientes = new JButton("Asignaturas");
         opciones.add(btnClientes);
-        btnEmpleados = new JButton("Empleados");
-        btnEmpleados.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                cl.show(general, "EMPLEADOS");
-            }
-        });
-        opciones.add(btnEmpleados);
-        btnFacturas = new JButton("Facturas");
-        btnFacturas.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                cl.show(general, "FACTURAS");
-            }
-        });
-        opciones.add(btnFacturas);
-        btnVentas = new JButton("Ventas");
-        btnVentas.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                cl.show(general, "VENTAS");
-            }
-        });
-        opciones.add(btnVentas);
+
+        btnCursos = new JButton("Cursos");
+        opciones.add(btnCursos);
+
+        btnDocentes = new JButton("Docentes");
+        opciones.add(btnDocentes);
 
         //SE AGREGAN LOS PANELES PARA LA PARTE SUPERIOR , CENTRAL E IZQUIERDA DEL BORDER LAYOUT
         add(barraArriba, BorderLayout.NORTH);
@@ -110,6 +69,6 @@ public class VetnanaInicio extends JFrame {
     }
 
     public static void main(String[] args) {
-
+        new VetnanaInicio();
     }
 }
